@@ -44,7 +44,7 @@ public class UsuarioEntity {
 	@Column(name = "TELEFONO")
 	private String telefono;
 
-	@Column(name = "FECHACREACION")
+	@Column(name = "FECHACREACION", insertable = false, updatable = false)
 	private LocalDateTime fechaCreacion;
 
 	@ManyToOne(fetch = FetchType.LAZY)

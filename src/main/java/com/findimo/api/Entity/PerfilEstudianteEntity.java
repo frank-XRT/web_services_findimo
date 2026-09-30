@@ -24,18 +24,50 @@ import lombok.NoArgsConstructor;
 @Builder
 public class PerfilEstudianteEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "IDPERFILESTUDIANTE")
-	private Long idPerfilEstudiante;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "IDPERFILESTUDIANTE")
+    private Long idPerfilEstudiante;
 
-	@Column(name = "NOMBREUNIVERSIDAD", length = 255)
-	private String nombreUniversidad;
+    @Column(name = "NOMBREUNIVERSIDAD", length = 255)
+    private String nombreUniversidad;
 
-	@Column(name = "PRESUPUESTOMAXIMO")
-	private Float presupuestoMaximo;
+    @Column(name = "PRESUPUESTOMAXIMO", precision = 10, scale = 2)
+    private BigDecimal presupuestoMaximo;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
-	private UsuarioEntity usuario;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
+    private UsuarioEntity usuario;
+
+    public Long getIdPerfilEstudiante() {
+        return idPerfilEstudiante;
+    }
+
+    public void setIdPerfilEstudiante(Long idPerfilEstudiante) {
+        this.idPerfilEstudiante = idPerfilEstudiante;
+    }
+
+    public String getNombreUniversidad() {
+        return nombreUniversidad;
+    }
+
+    public void setNombreUniversidad(String nombreUniversidad) {
+        this.nombreUniversidad = nombreUniversidad;
+    }
+
+    public BigDecimal getPresupuestoMaximo() {
+        return presupuestoMaximo;
+    }
+
+    public void setPresupuestoMaximo(BigDecimal presupuestoMaximo) {
+        this.presupuestoMaximo = presupuestoMaximo;
+    }
+
+    public UsuarioEntity getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
+    }
 }

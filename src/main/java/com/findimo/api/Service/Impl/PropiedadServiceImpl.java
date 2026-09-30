@@ -2,13 +2,14 @@ package com.findimo.api.Service.Impl;
 
 import java.util.List;
 
+import com.findimo.api.Entity.PerfilArrendadorEntity;
+import com.findimo.api.Repository.PerfilArrendadorRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.findimo.api.Entity.PerfilArrendadorEntity;
+
 import com.findimo.api.Entity.PropiedadEntity;
-import com.findimo.api.Repository.PerfilArrendadorRepository;
 import com.findimo.api.Repository.PropiedadRepository;
 import com.findimo.api.Dto.PropiedadRequestDto;
 import com.findimo.api.Dto.PropiedadResponseDto;
