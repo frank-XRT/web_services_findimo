@@ -21,6 +21,8 @@ public class ResenaResponseDto {
 
     private Long idPropiedad;
 
+    private Long idUsuarioObjetivo;
+
     private Integer calificacion;
     private String comentario;
     private LocalDateTime fechaCreacion;
