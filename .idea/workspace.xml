@@ -8,38 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="424c7c8a-c63e-4ce4-97a9-27a39ad9a963" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Controller/UsuarioController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/RegistroUsuarioRequestDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/RegistroUsuarioResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/Impl/UsuarioServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/UsuarioService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Controller/ResenaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/ResenaResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/ResenaEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Repository/ResenaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/Impl/ResenaServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/ResenaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/ApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/ApiApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Controller/PropiedadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Controller/PropiedadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/PerfilArrendadorEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/PerfilArrendadorEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/PerfilEstudianteEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/PerfilEstudianteEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/UsuarioEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/UsuarioEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Repository/PerfilArrendadorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Repository/PerfilArrendadorRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Repository/PerfilEstudianteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Repository/PerfilEstudianteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Repository/PropiedadRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Repository/PropiedadRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Repository/RolRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Repository/RolRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Repository/UsuarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/Impl/PropiedadServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/Impl/PropiedadServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/ApiApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/ApiApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Controller/PropiedadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Controller/PropiedadController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/PerfilArrendadorEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/PerfilArrendadorEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/PerfilEstudianteEntity$PerfilEstudianteEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/PerfilEstudianteEntity$PerfilEstudianteEntityBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/PerfilEstudianteEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/PerfilEstudianteEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/UsuarioEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/UsuarioEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Repository/PerfilArrendadorRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Repository/PerfilArrendadorRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Repository/PerfilEstudianteRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Repository/PerfilEstudianteRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Repository/PropiedadRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Repository/PropiedadRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Repository/RolRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Repository/RolRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Repository/UsuarioRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Repository/UsuarioRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Service/Impl/PropiedadServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Service/Impl/PropiedadServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +27,7 @@
   <component name="CopilotPersistence">
     <persistenceIdMap>
       <entry key="_/Users/kevin/Library/CloudStorage/GoogleDrive-palominoisacupek2005@gmail.com/Otras computadoras/Mi PC/M:/UPC/Ciclo 6/Arqui/Proyecto/web_services_findimo" value="3JwK0vXYYzgm0H5JGpebYRNK1Pw" />
+      <entry key="_C:/Users/Admin/OneDrive/Documentos/web_services_findimo" value="3KDBm9r0smaUdfRhlQiTequGKPd" />
       <entry key="_C:/Users/Personal/OneDrive - Universidad Peruana de Ciencias/Escritorio/U/6° ciclo/ARQUITECTURA DE APLICACIONES WEB/Proyecto Parcial/api/api" value="3Jvzo1gBz8I9leFMl2ylA8YYvV3" />
     </persistenceIdMap>
   </component>
@@ -82,6 +61,65 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0001850239949353" />
+      <entry key="MS500" value="1.1792444133296398" />
+      <entry key="S2" value="1.6599230496885733" />
+      <entry key="S5" value="1.995700222664836" />
+      <entry key="S10" value="2.309723442942199" />
+      <entry key="S30" value="2.752600009953883" />
+      <entry key="S60" value="3.062621201234346" />
+      <entry key="M2" value="3.3882800484916773" />
+      <entry key="M5" value="3.7060462284371645" />
+      <entry key="M10" value="3.84310574000025" />
+      <entry key="M15" value="3.8930521418819293" />
+      <entry key="M30" value="3.9453109127695902" />
+      <entry key="H1" value="3.9723440614756313" />
+      <entry key="H2" value="3.9860932103245617" />
+      <entry key="H4" value="3.993026777259889" />
+      <entry key="D1" value="3.9988350318490684" />
+      <entry key="W1" value="3.999833508142647" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9594229745322275" />
+      <entry key="MS500" value="1.1655769831128395" />
+      <entry key="S2" value="1.6524196158994255" />
+      <entry key="S5" value="1.989038465684242" />
+      <entry key="S10" value="2.3037193839629158" />
+      <entry key="S30" value="2.749164880835034" />
+      <entry key="S60" value="3.060349351136127" />
+      <entry key="M2" value="3.386843299026452" />
+      <entry key="M5" value="3.705352703836702" />
+      <entry key="M10" value="3.8427332374513727" />
+      <entry key="M15" value="3.8927975452317005" />
+      <entry key="M30" value="3.9451803366341527" />
+      <entry key="H1" value="3.972277925226922" />
+      <entry key="H2" value="3.9860599264583434" />
+      <entry key="H4" value="3.9930100809224824" />
+      <entry key="D1" value="3.9988322415299042" />
+      <entry key="W1" value="3.9998331093390673" />
+    </decayedShown>
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -90,6 +128,9 @@
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3JvLwyZoSXVh629fnTuAp91XBrO" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectSessionTemplates">
     <option name="panelTemplate">
       <template>
@@ -119,12 +160,14 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "Spring Boot.ApiApplication.executor": "Run",
     "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "copilot.chat.legacySessionMetadata.migrated": "true",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "develop",
     "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/kevin/Documents/web_services_findimo",
+    "last_opened_file_path": "C:/Users/Admin/OneDrive/Documentos/web_services_findimo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.detected.package.tslint": "true",
@@ -135,7 +178,8 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true"
   }
 }]]></component>
   <component name="RunManager">
@@ -154,8 +198,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+        <option value="bundled-jdk-30f59d01ecdd-34e2839f716b-intellij.indexing.shared.core-IU-262.9437.185" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.9437.185" />
       </set>
     </attachedChunks>
   </component>
