@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -19,9 +20,9 @@ public class AuditoriaResponseDto {
 
     private Long idUsuarioEliminar;
 
-    private String datosAnteriores;
+    private Map<String, Object> datosAnteriores;
 
-    private String datosNuevos;
+    private Map<String, Object> datosNuevos;
 
     private LocalDateTime fechaRegistro;
 

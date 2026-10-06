@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Map;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,9 +17,9 @@ public class AuditoriaRequestDto {
 
     private Long idUsuarioEliminar;
 
-    private String datosAnteriores;
+    private Map<String, Object> datosAnteriores;
 
-    private String datosNuevos;
+    private Map<String, Object> datosNuevos;
 
     private Boolean estado;
 }

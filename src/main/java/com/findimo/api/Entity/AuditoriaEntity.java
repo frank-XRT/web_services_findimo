@@ -6,12 +6,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @Entity
 @Table(name = "tt_auditoria", schema = "findimo")
@@ -23,24 +28,30 @@ public class AuditoriaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idauditoria")
+    @Column(name = "IDAUDITORIA")
     private Long idAuditoria;
 
-    @Column(name = "idusuarioeditar")
+    @Column(name = "IDUSUARIOEDITAR")
     private Long idUsuarioEditar;
 
-    @Column(name = "idusuarioeliminar")
+    @Column(name = "IDUSUARIOELIMINAR")
     private Long idUsuarioEliminar;
 
-    @Column(name = "datosanteriores", columnDefinition = "jsonb")
-    private String datosAnteriores;
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "DATOSANTERIORES", columnDefinition = "jsonb")
+    private Map<String, Object> datosAnteriores;
 
-    @Column(name = "datosnuevos", columnDefinition = "jsonb")
-    private String datosNuevos;
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "DATOSNUEVOS", columnDefinition = "jsonb")
+    private Map<String, Object> datosNuevos;
 
-    @Column(name = "fecharegistro", insertable = false, updatable = false)
+    @Column(
+            name = "FECHAREGISTRO",
+            insertable = false,
+            updatable = false
+    )
     private LocalDateTime fechaRegistro;
 
-    @Column(name = "estado", nullable = false)
+    @Column(name = "ESTADO", nullable = false)
     private Boolean estado;
 }
