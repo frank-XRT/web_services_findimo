@@ -9,7 +9,7 @@ public interface FavoritoService {
 
     FavoritoResponseDto registrarFavorito(FavoritoRequestDto dto);
 
-    FavoritoResponseDto cambiarEstadoFavorito(Long idFavorito, Boolean estado);
+    FavoritoResponseDto cambiarEstadoFavorito(Long idFavorito, Boolean estado, Long idUsuario);
 
     List<FavoritoResponseDto> listarFavoritosPorPerfilEstudiante(
             Long idPerfilEstudiante

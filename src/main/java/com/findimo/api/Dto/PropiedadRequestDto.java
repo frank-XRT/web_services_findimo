@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class PropiedadRequestDto {
 
+	private Long idUsuario;
 	private Long idPerfilArrendador;
 	private String titulo;
 	private String descripcion;
