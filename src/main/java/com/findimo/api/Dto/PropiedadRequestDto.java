@@ -20,5 +20,5 @@ public class PropiedadRequestDto {
 	private Integer habitaciones;
 	private String direccion;
 	private String distrito;
-	private String estado;
+	private Boolean estado;
 }

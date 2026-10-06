@@ -48,7 +48,8 @@ public class PropiedadEntity {
 	private String distrito;
 
 	@Column(name = "ESTADO")
-	private String estado;
+	private Boolean estado;
+
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPerfilArrendador", referencedColumnName = "idPerfilArrendador")
