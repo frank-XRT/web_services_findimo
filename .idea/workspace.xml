@@ -8,19 +8,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="424c7c8a-c63e-4ce4-97a9-27a39ad9a963" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/AuditoriaEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Repository/AuditoriaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/AuditoriaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/Impl/AuditoriaServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Controller/FavoritoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/FavoritoRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/FavoritoResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/FavoritoEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Repository/FavoritoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/FavoritoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/Impl/FavoritoServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Controller/FavoritoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Controller/FavoritoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Controller/PropiedadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Controller/PropiedadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/FavoritoRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/FavoritoRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/PropiedadRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/PropiedadRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/PropiedadResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/PropiedadResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/FavoritoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/FavoritoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/Impl/FavoritoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/Impl/FavoritoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/Impl/PropiedadServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/Impl/PropiedadServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Controller/ResenaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Controller/ResenaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/ResenaResponseDto$ResenaResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/ResenaResponseDto$ResenaResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/ResenaResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/ResenaResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Service/Impl/ResenaServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Service/Impl/ResenaServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Service/ResenaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Service/ResenaService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,61 +66,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="6.058761957286403E-212" />
-      <entry key="MS500" value="6.730766676835226E-43" />
-      <entry key="S2" value="4.562502681456478E-11" />
-      <entry key="S5" value="1.1905328318209754E-4" />
-      <entry key="S10" value="0.017839513958102213" />
-      <entry key="S30" value="0.5441067566050772" />
-      <entry key="S60" value="1.3616446704228955" />
-      <entry key="M2" value="2.259251355131962" />
-      <entry key="M5" value="3.151410179365518" />
-      <entry key="M10" value="3.5438830743247003" />
-      <entry key="M15" value="3.6882605008923135" />
-      <entry key="M30" value="3.8401387580965527" />
-      <entry key="H1" value="3.919040028262759" />
-      <entry key="H2" value="3.9592586193327737" />
-      <entry key="H4" value="3.979563445964339" />
-      <entry key="D1" value="3.9965847158418017" />
-      <entry key="W1" value="3.999511876579996" />
+      <entry key="MS100" value="1.0001850239949353" />
+      <entry key="MS500" value="1.1792444133296398" />
+      <entry key="S2" value="1.6599230496885733" />
+      <entry key="S5" value="1.995700222664836" />
+      <entry key="S10" value="2.309723442942199" />
+      <entry key="S30" value="2.752600009953883" />
+      <entry key="S60" value="3.062621201234346" />
+      <entry key="M2" value="3.3882800484916773" />
+      <entry key="M5" value="3.7060462284371645" />
+      <entry key="M10" value="3.84310574000025" />
+      <entry key="M15" value="3.8930521418819293" />
+      <entry key="M30" value="3.9453109127695902" />
+      <entry key="H1" value="3.9723440614756313" />
+      <entry key="H2" value="3.9860932103245617" />
+      <entry key="H4" value="3.993026777259889" />
+      <entry key="D1" value="3.9988350318490684" />
+      <entry key="W1" value="3.999833508142647" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000000241181266" />
-      <entry key="S5" value="1.0015843213148308" />
-      <entry key="S10" value="1.0741648572961626" />
-      <entry key="S30" value="2.0394051721862505" />
-      <entry key="S60" value="3.03408087794677" />
-      <entry key="M2" value="3.850672874210776" />
-      <entry key="M5" value="4.492613912175088" />
-      <entry key="M10" value="4.737614706557746" />
-      <entry key="M15" value="4.823085038555899" />
-      <entry key="M30" value="4.910531407769164" />
-      <entry key="H1" value="4.9550099970766155" />
-      <entry key="H2" value="4.977440701968906" />
-      <entry key="H4" value="4.988704230372155" />
-      <entry key="D1" value="4.99811512879951" />
-      <entry key="W1" value="4.999730677705116" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0015645896046672298" />
-      <entry key="MS500" value="0.2747135543942199" />
-      <entry key="S2" value="0.7239690955805969" />
-      <entry key="S5" value="0.8799684066935581" />
-      <entry key="S10" value="1.015375748533427" />
-      <entry key="S30" value="2.490466692225034" />
-      <entry key="S60" value="4.313080422874279" />
-      <entry key="M2" value="6.053408255031533" />
-      <entry key="M5" value="7.616542922915438" />
-      <entry key="M10" value="8.266814555610551" />
-      <entry key="M15" value="8.501336347271394" />
-      <entry key="M30" value="8.745552519668744" />
-      <entry key="H1" value="8.871462389395774" />
-      <entry key="H2" value="8.935398230104767" />
-      <entry key="H4" value="8.967615303602063" />
-      <entry key="D1" value="8.99459086133026" />
-      <entry key="W1" value="8.999226978997637" />
+      <entry key="MS100" value="0.9594229745322275" />
+      <entry key="MS500" value="1.1655769831128395" />
+      <entry key="S2" value="1.6524196158994255" />
+      <entry key="S5" value="1.989038465684242" />
+      <entry key="S10" value="2.3037193839629158" />
+      <entry key="S30" value="2.749164880835034" />
+      <entry key="S60" value="3.060349351136127" />
+      <entry key="M2" value="3.386843299026452" />
+      <entry key="M5" value="3.705352703836702" />
+      <entry key="M10" value="3.8427332374513727" />
+      <entry key="M15" value="3.8927975452317005" />
+      <entry key="M30" value="3.9451803366341527" />
+      <entry key="H1" value="3.972277925226922" />
+      <entry key="H2" value="3.9860599264583434" />
+      <entry key="H4" value="3.9930100809224824" />
+      <entry key="D1" value="3.9988322415299042" />
+      <entry key="W1" value="3.9998331093390673" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -166,7 +166,7 @@
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "copilot.chat.legacySessionMetadata.migrated": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "feature/US09-guardar-propiedades-favoritas",
+    "git-widget-placeholder": "develop",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",

@@ -11,8 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class FavoritoRequestDto {
 
-    private Long idUsuario;
-
     private Long idPerfilEstudiante;
 
     private Long idPropiedad;
