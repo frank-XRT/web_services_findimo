@@ -9,17 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ResenaRequestDto {
+public class SolicitudAlquilerRequestDto {
 
-    private Long idUsuarioAutor;
+    private Long idPerfilEstudiante;
 
     private Long idPropiedad;
-
-    private Long idUsuarioObjetivo;
-
-    private Integer calificacion;
-
-    private String comentario;
-
-    private Boolean estado;
 }

@@ -18,40 +18,39 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "tt_resena", schema = "findimo")
+@Table(name = "tt_solicitud_alquiler", schema = "findimo")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ResenaEntity {
+public class SolicitudAlquilerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IDRESENA")
-    private Long idResena;
+    @Column(name = "IDSOLICITUDALQUILER")
+    private Long idSolicitudAlquiler;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IDUSUARIOAUTOR", nullable = false)
-    private UsuarioEntity usuarioAutor;
+    @JoinColumn(
+            name = "IDPERFILESTUDIANTE",
+            nullable = false
+    )
+    private PerfilEstudianteEntity perfilEstudiante;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IDPROPIEDAD")
+    @JoinColumn(
+            name = "IDPROPIEDAD",
+            nullable = false
+    )
     private PropiedadEntity propiedad;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IDUSUARIOOBJETIVO")
-    private UsuarioEntity usuarioObjetivo;
-
-    @Column(name = "CALIFICACION", nullable = false)
-    private Integer calificacion;
-
-    @Column(name = "COMENTARIO")
-    private String comentario;
 
     @Column(name = "ESTADO", nullable = false)
     private Boolean estado;
 
-    @Column(name = "FECHACREACION", insertable = false, updatable = false)
+    @Column(
+            name = "FECHACREACION",
+            insertable = false,
+            updatable = false
+    )
     private LocalDateTime fechaCreacion;
-
 }

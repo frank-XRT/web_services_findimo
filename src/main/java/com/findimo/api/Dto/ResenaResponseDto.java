@@ -27,6 +27,24 @@ public class ResenaResponseDto {
     private String comentario;
     private LocalDateTime fechaCreacion;
 
+    private Boolean estado;
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    public Long getIdUsuarioObjetivo() {
+        return idUsuarioObjetivo;
+    }
+
+    public void setIdUsuarioObjetivo(Long idUsuarioObjetivo) {
+        this.idUsuarioObjetivo = idUsuarioObjetivo;
+    }
+
     public Long getIdResena() {
         return idResena;
     }

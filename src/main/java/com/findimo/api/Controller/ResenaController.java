@@ -17,9 +17,9 @@ public class ResenaController {
 
     private final ResenaService resenaService;
 
-    @GetMapping("/referencia/{id}")
+    @GetMapping("/propiedad/{idPropiedad}")
     public ResponseEntity<List<ResenaResponseDto>> listarResenasPorPropiedad(
-            @PathVariable Long idPropiedad) {
+            @PathVariable("idPropiedad") Long idPropiedad) {
 
         List<ResenaResponseDto> resenas =
                 resenaService.listarResenasPorPropiedad(idPropiedad);

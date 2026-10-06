@@ -23,6 +23,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class FavoritoEntity {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IDFAVORITO")

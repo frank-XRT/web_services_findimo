@@ -1,5 +1,7 @@
 package com.findimo.api.Dto;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,17 +11,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ResenaRequestDto {
+public class SolicitudAlquilerResponseDto {
 
-    private Long idUsuarioAutor;
+    private Long idSolicitudAlquiler;
+
+    private Long idPerfilEstudiante;
 
     private Long idPropiedad;
 
-    private Long idUsuarioObjetivo;
-
-    private Integer calificacion;
-
-    private String comentario;
-
     private Boolean estado;
+
+    private LocalDateTime fechaCreacion;
 }

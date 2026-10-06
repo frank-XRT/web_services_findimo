@@ -66,6 +66,7 @@ public class ResenaServiceImpl implements ResenaService {
             dto.setCalificacion(resena.getCalificacion());
             dto.setComentario(resena.getComentario());
             dto.setFechaCreacion(resena.getFechaCreacion());
+            dto.setEstado(resena.getEstado());
 
             response.add(dto);
         }
@@ -149,6 +150,7 @@ public class ResenaServiceImpl implements ResenaService {
         resena.setUsuarioObjetivo(usuarioObjetivo);
         resena.setCalificacion(dto.getCalificacion());
         resena.setComentario(dto.getComentario());
+        resena.setEstado(true); // ← FALTABA ESTO
 
         ResenaEntity resenaGuardada =
                 resenaRepository.save(resena);
@@ -195,6 +197,10 @@ public class ResenaServiceImpl implements ResenaService {
 
         response.setFechaCreacion(
                 resenaGuardada.getFechaCreacion()
+        );
+
+        response.setEstado(
+                resenaGuardada.getEstado()
         );
 
         return response;

@@ -22,6 +22,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class PerfilArrendadorEntity {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IDPERFILARRENDADOR")
