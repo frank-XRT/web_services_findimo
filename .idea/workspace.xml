@@ -8,47 +8,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="424c7c8a-c63e-4ce4-97a9-27a39ad9a963" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Controller/SolicitudAlquilerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/SolicitudAlquilerRequestDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/SolicitudAlquilerResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/SolicitudAlquilerEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Repository/SolicitudAlquilerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/Impl/SolicitudAlquilerServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/SolicitudAlquilerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Controller/AuditoriaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/AuditoriaRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/AuditoriaResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/AuditoriaEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Repository/AuditoriaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/AuditoriaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/Impl/AuditoriaServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Config/SeguridadConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Config/SeguridadConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Controller/ResenaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Controller/ResenaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/PropiedadRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/PropiedadRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/PropiedadResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/PropiedadResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/ResenaRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/ResenaRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/ResenaResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Dto/ResenaResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/FavoritoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/FavoritoEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/PerfilArrendadorEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/PerfilArrendadorEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/PerfilEstudianteEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/PerfilEstudianteEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/PropiedadEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/PropiedadEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/ResenaEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/ResenaEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/RolEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/RolEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/UsuarioEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Entity/UsuarioEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/Impl/ResenaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/findimo/api/Service/Impl/ResenaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Config/SeguridadConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Config/SeguridadConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Controller/ResenaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Controller/ResenaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/PropiedadRequestDto$PropiedadRequestDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/PropiedadRequestDto$PropiedadRequestDtoBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/PropiedadRequestDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/PropiedadRequestDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/PropiedadResponseDto$PropiedadResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/PropiedadResponseDto$PropiedadResponseDtoBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/PropiedadResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/PropiedadResponseDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/ResenaRequestDto$ResenaRequestDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/ResenaRequestDto$ResenaRequestDtoBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/ResenaRequestDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/ResenaRequestDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/ResenaResponseDto$ResenaResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/ResenaResponseDto$ResenaResponseDtoBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/ResenaResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Dto/ResenaResponseDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/PerfilArrendadorEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/PerfilArrendadorEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/PerfilEstudianteEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/PerfilEstudianteEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/PropiedadEntity$PropiedadEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/PropiedadEntity$PropiedadEntityBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/PropiedadEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/PropiedadEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/ResenaEntity$ResenaEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/ResenaEntity$ResenaEntityBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/ResenaEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/ResenaEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/UsuarioEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Entity/UsuarioEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Service/Impl/PropiedadServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Service/Impl/PropiedadServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/findimo/api/Service/Impl/ResenaServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/findimo/api/Service/Impl/ResenaServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
