@@ -13,16 +13,14 @@ import com.findimo.api.Service.FavoritoService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/favoritos")
+@RequestMapping("/favoritos")
 @RequiredArgsConstructor
 public class FavoritoController {
 
     private final FavoritoService favoritoService;
 
-
     @PostMapping
-    public ResponseEntity<FavoritoResponseDto>
-    registrarFavorito(
+    public ResponseEntity<FavoritoResponseDto> registrarFavorito(
             @RequestBody FavoritoRequestDto dto) {
 
         FavoritoResponseDto response =
@@ -33,28 +31,22 @@ public class FavoritoController {
                 .body(response);
     }
 
-
     @PutMapping("/{idFavorito}/estado")
-    public ResponseEntity<FavoritoResponseDto>
-    cambiarEstadoFavorito(
+    public ResponseEntity<FavoritoResponseDto> cambiarEstadoFavorito(
             @PathVariable Long idFavorito,
-            @RequestParam Boolean estado,
-            @RequestParam Long idUsuario) {
+            @RequestParam Boolean estado) {
 
         FavoritoResponseDto response =
                 favoritoService.cambiarEstadoFavorito(
                         idFavorito,
-                        estado,
-                        idUsuario
+                        estado
                 );
 
         return ResponseEntity.ok(response);
     }
 
-
     @GetMapping("/perfil/{idPerfilEstudiante}")
-    public ResponseEntity<List<FavoritoResponseDto>>
-    listarFavoritos(
+    public ResponseEntity<List<FavoritoResponseDto>> listarFavoritos(
             @PathVariable Long idPerfilEstudiante) {
 
         List<FavoritoResponseDto> favoritos =
@@ -66,3 +58,7 @@ public class FavoritoController {
         return ResponseEntity.ok(favoritos);
     }
 }
+
+
+
+
