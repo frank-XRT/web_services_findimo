@@ -7,9 +7,13 @@ import java.util.List;
 
 public interface AuditoriaService {
 
-    AuditoriaResponseDto registrarAuditoria(AuditoriaRequestDto dto);
+    AuditoriaResponseDto registrarAuditoria(
+            AuditoriaRequestDto dto
+    );
 
     List<AuditoriaResponseDto> listarAuditorias();
 
-    AuditoriaResponseDto obtenerAuditoria(Long idAuditoria);
+    AuditoriaResponseDto obtenerAuditoria(
+            Long idAuditoria
+    );
 }
