@@ -10,19 +10,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Entity
 @Table(name = "tt_favorito", schema = "findimo")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class FavoritoEntity {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,4 +29,39 @@ public class FavoritoEntity {
 
     @Column(name = "ESTADO", nullable = false)
     private Boolean estado;
+
+    public FavoritoEntity() {
+    }
+
+    public Long getIdFavorito() {
+        return idFavorito;
+    }
+
+    public void setIdFavorito(Long idFavorito) {
+        this.idFavorito = idFavorito;
+    }
+
+    public PerfilEstudianteEntity getPerfilEstudiante() {
+        return perfilEstudiante;
+    }
+
+    public void setPerfilEstudiante(PerfilEstudianteEntity perfilEstudiante) {
+        this.perfilEstudiante = perfilEstudiante;
+    }
+
+    public PropiedadEntity getPropiedad() {
+        return propiedad;
+    }
+
+    public void setPropiedad(PropiedadEntity propiedad) {
+        this.propiedad = propiedad;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
 }

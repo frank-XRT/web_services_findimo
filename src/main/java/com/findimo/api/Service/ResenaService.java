@@ -7,7 +7,7 @@ import com.findimo.api.Dto.ResenaResponseDto;
 
 public interface ResenaService {
 
-    List<ResenaResponseDto> listarResenasPorPropiedad(Long idPropiedad);
     ResenaResponseDto registrarResena(ResenaRequestDto dto);
 
+    List<ResenaResponseDto> listarResenasPorPropiedad(Long idPropiedad);
 }

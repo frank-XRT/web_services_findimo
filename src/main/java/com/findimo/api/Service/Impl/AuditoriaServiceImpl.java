@@ -5,72 +5,65 @@ import com.findimo.api.Dto.AuditoriaResponseDto;
 import com.findimo.api.Entity.AuditoriaEntity;
 import com.findimo.api.Repository.AuditoriaRepository;
 import com.findimo.api.Service.AuditoriaService;
-
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class AuditoriaServiceImpl implements AuditoriaService {
 
-    private final AuditoriaRepository auditoriaRepository;
+    @Autowired
+    private AuditoriaRepository auditoriaRepository;
 
     @Override
-    @Transactional
     public AuditoriaResponseDto registrarAuditoria(AuditoriaRequestDto dto) {
 
-        AuditoriaEntity auditoria = AuditoriaEntity.builder()
-                .idUsuarioEditar(dto.getIdUsuarioEditar())
-                .idUsuarioEliminar(dto.getIdUsuarioEliminar())
-                .datosAnteriores(dto.getDatosAnteriores())
-                .datosNuevos(dto.getDatosNuevos())
-                .estado(dto.getEstado() != null ? dto.getEstado() : true)
-                .build();
+        AuditoriaEntity auditoria = new AuditoriaEntity();
 
-        AuditoriaEntity auditoriaGuardada =
-                auditoriaRepository.save(auditoria);
+        auditoria.setIdUsuarioEditar(dto.getIdUsuarioEditar());
+        auditoria.setIdUsuarioEliminar(dto.getIdUsuarioEliminar());
+        auditoria.setDatosAnteriores(dto.getDatosAnteriores());
+        auditoria.setDatosNuevos(dto.getDatosNuevos());
+        auditoria.setEstado(dto.getEstado() == null || dto.getEstado());
 
-        return convertirResponse(auditoriaGuardada);
+        AuditoriaEntity guardada = auditoriaRepository.save(auditoria);
+
+        AuditoriaResponseDto response = new AuditoriaResponseDto();
+
+        response.setIdAuditoria(guardada.getIdAuditoria());
+        response.setIdUsuarioEditar(guardada.getIdUsuarioEditar());
+        response.setIdUsuarioEliminar(guardada.getIdUsuarioEliminar());
+        response.setDatosAnteriores(guardada.getDatosAnteriores());
+        response.setDatosNuevos(guardada.getDatosNuevos());
+        response.setFechaRegistro(guardada.getFechaRegistro());
+        response.setEstado(guardada.getEstado());
+
+        return response;
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<AuditoriaResponseDto> listarAuditorias() {
 
-        return auditoriaRepository.findAll()
-                .stream()
-                .map(this::convertirResponse)
-                .collect(Collectors.toList());
-    }
+        List<AuditoriaEntity> lista = auditoriaRepository.findAll();
+        List<AuditoriaResponseDto> respuestas = new ArrayList<>();
 
-    @Override
-    @Transactional(readOnly = true)
-    public AuditoriaResponseDto obtenerAuditoria(Long idAuditoria) {
+        for (AuditoriaEntity auditoria : lista) {
 
-        AuditoriaEntity auditoria = auditoriaRepository
-                .findById(idAuditoria)
-                .orElseThrow(() ->
-                        new RuntimeException("La auditoria no existe.")
-                );
+            AuditoriaResponseDto response = new AuditoriaResponseDto();
 
-        return convertirResponse(auditoria);
-    }
+            response.setIdAuditoria(auditoria.getIdAuditoria());
+            response.setIdUsuarioEditar(auditoria.getIdUsuarioEditar());
+            response.setIdUsuarioEliminar(auditoria.getIdUsuarioEliminar());
+            response.setDatosAnteriores(auditoria.getDatosAnteriores());
+            response.setDatosNuevos(auditoria.getDatosNuevos());
+            response.setFechaRegistro(auditoria.getFechaRegistro());
+            response.setEstado(auditoria.getEstado());
 
-    private AuditoriaResponseDto convertirResponse(
-            AuditoriaEntity auditoria) {
+            respuestas.add(response);
+        }
 
-        return AuditoriaResponseDto.builder()
-                .idAuditoria(auditoria.getIdAuditoria())
-                .idUsuarioEditar(auditoria.getIdUsuarioEditar())
-                .idUsuarioEliminar(auditoria.getIdUsuarioEliminar())
-                .datosAnteriores(auditoria.getDatosAnteriores())
-                .datosNuevos(auditoria.getDatosNuevos())
-                .fechaRegistro(auditoria.getFechaRegistro())
-                .estado(auditoria.getEstado())
-                .build();
+        return respuestas;
     }
 }

@@ -9,19 +9,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tm_perfil_arrendador", schema = "findimo")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class PerfilArrendadorEntity {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +25,9 @@ public class PerfilArrendadorEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
     private UsuarioEntity usuario;
+
+    public PerfilArrendadorEntity() {
+    }
 
     public Long getIdPerfilArrendador() {
         return idPerfilArrendador;
