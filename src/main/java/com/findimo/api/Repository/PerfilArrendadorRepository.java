@@ -6,4 +6,5 @@ import com.findimo.api.Entity.PerfilArrendadorEntity;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PerfilArrendadorRepository extends JpaRepository<PerfilArrendadorEntity, Long> {}
+public interface PerfilArrendadorRepository extends JpaRepository<PerfilArrendadorEntity, Long> {
+}

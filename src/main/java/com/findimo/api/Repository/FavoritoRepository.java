@@ -1,22 +1,23 @@
 package com.findimo.api.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.findimo.api.Entity.FavoritoEntity;
+import com.findimo.api.Entity.PerfilEstudianteEntity;
+import com.findimo.api.Entity.PropiedadEntity;
 
 @Repository
 public interface FavoritoRepository extends JpaRepository<FavoritoEntity, Long> {
 
-    Optional<FavoritoEntity> findByPerfilEstudiante_IdPerfilEstudianteAndPropiedad_IdPropiedad(
-            Long idPerfilEstudiante,
-            Long idPropiedad
+    FavoritoEntity findByPerfilEstudianteAndPropiedad(
+            PerfilEstudianteEntity perfilEstudiante,
+            PropiedadEntity propiedad
     );
 
-    List<FavoritoEntity> findByPerfilEstudiante_IdPerfilEstudianteAndEstadoTrue(
-            Long idPerfilEstudiante
+    List<FavoritoEntity> findByPerfilEstudianteAndEstadoTrue(
+            PerfilEstudianteEntity perfilEstudiante
     );
 }

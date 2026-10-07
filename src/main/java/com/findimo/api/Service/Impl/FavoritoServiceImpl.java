@@ -2,7 +2,6 @@ package com.findimo.api.Service.Impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,53 +31,22 @@ public class FavoritoServiceImpl implements FavoritoService {
     @Override
     public FavoritoResponseDto registrarFavorito(FavoritoRequestDto dto) {
 
-        // Buscar perfil estudiante
-        Optional<PerfilEstudianteEntity> perfilOptional =
-                perfilEstudianteRepository.findById(dto.getIdPerfilEstudiante());
-
-        if (perfilOptional.isEmpty()) {
-            throw new RuntimeException(
-                    "El perfil estudiante no existe."
-            );
-        }
-
         PerfilEstudianteEntity perfilEstudiante =
-                perfilOptional.get();
-
-        // Buscar propiedad
-        Optional<PropiedadEntity> propiedadOptional =
-                propiedadRepository.findById(dto.getIdPropiedad());
-
-        if (propiedadOptional.isEmpty()) {
-            throw new RuntimeException(
-                    "La propiedad no existe."
-            );
-        }
+                perfilEstudianteRepository.getReferenceById(dto.getIdPerfilEstudiante());
 
         PropiedadEntity propiedad =
-                propiedadOptional.get();
+                propiedadRepository.getReferenceById(dto.getIdPropiedad());
 
-        // Verificar si ya existe el favorito
-        Optional<FavoritoEntity> favoritoOptional =
-                favoritoRepository
-                        .findByPerfilEstudiante_IdPerfilEstudianteAndPropiedad_IdPropiedad(
-                                dto.getIdPerfilEstudiante(),
-                                dto.getIdPropiedad()
-                        );
+        FavoritoEntity favorito =
+                favoritoRepository.findByPerfilEstudianteAndPropiedad(
+                        perfilEstudiante,
+                        propiedad
+                );
 
-        FavoritoEntity favorito;
-
-        if (favoritoOptional.isPresent()) {
-
-            // Si ya existe, solamente se vuelve a activar
-            favorito = favoritoOptional.get();
+        if (favorito != null) {
             favorito.setEstado(true);
-
         } else {
-
-            // Crear nuevo favorito
             favorito = new FavoritoEntity();
-
             favorito.setPerfilEstudiante(perfilEstudiante);
             favorito.setPropiedad(propiedad);
             favorito.setEstado(true);
@@ -87,89 +55,53 @@ public class FavoritoServiceImpl implements FavoritoService {
         FavoritoEntity favoritoGuardado =
                 favoritoRepository.save(favorito);
 
-        // Crear respuesta
         FavoritoResponseDto response =
                 new FavoritoResponseDto();
 
-        response.setIdFavorito(
-                favoritoGuardado.getIdFavorito()
-        );
-
-        response.setIdPerfilEstudiante(
-                perfilEstudiante.getIdPerfilEstudiante()
-        );
-
-        response.setIdPropiedad(
-                propiedad.getIdPropiedad()
-        );
-
-        response.setEstado(
-                favoritoGuardado.getEstado()
-        );
+        response.setIdFavorito(favoritoGuardado.getIdFavorito());
+        response.setIdPerfilEstudiante(perfilEstudiante.getIdPerfilEstudiante());
+        response.setIdPropiedad(propiedad.getIdPropiedad());
+        response.setEstado(favoritoGuardado.getEstado());
 
         return response;
     }
 
     @Override
-    public FavoritoResponseDto cambiarEstadoFavorito(
-            Long idFavorito,
-            Boolean estado) {
-
-        // Buscar favorito
-        Optional<FavoritoEntity> favoritoOptional =
-                favoritoRepository.findById(idFavorito);
-
-        if (favoritoOptional.isEmpty()) {
-            throw new RuntimeException(
-                    "El favorito no existe."
-            );
-        }
+    public FavoritoResponseDto cambiarEstadoFavorito(Long idFavorito, Boolean estado) {
 
         FavoritoEntity favorito =
-                favoritoOptional.get();
+                favoritoRepository.getReferenceById(idFavorito);
 
-        // Cambiar estado
         favorito.setEstado(estado);
 
         FavoritoEntity favoritoGuardado =
                 favoritoRepository.save(favorito);
 
-        // Crear respuesta
         FavoritoResponseDto response =
                 new FavoritoResponseDto();
 
-        response.setIdFavorito(
-                favoritoGuardado.getIdFavorito()
-        );
-
+        response.setIdFavorito(favoritoGuardado.getIdFavorito());
         response.setIdPerfilEstudiante(
-                favoritoGuardado
-                        .getPerfilEstudiante()
-                        .getIdPerfilEstudiante()
+                favoritoGuardado.getPerfilEstudiante().getIdPerfilEstudiante()
         );
-
         response.setIdPropiedad(
-                favoritoGuardado
-                        .getPropiedad()
-                        .getIdPropiedad()
+                favoritoGuardado.getPropiedad().getIdPropiedad()
         );
-
-        response.setEstado(
-                favoritoGuardado.getEstado()
-        );
+        response.setEstado(favoritoGuardado.getEstado());
 
         return response;
     }
 
     @Override
-    public List<FavoritoResponseDto> listarFavoritosPorPerfilEstudiante(
-            Long idPerfilEstudiante) {
+    public List<FavoritoResponseDto> listarFavoritosPorPerfilEstudiante(Long idPerfilEstudiante) {
+
+        PerfilEstudianteEntity perfilEstudiante =
+                perfilEstudianteRepository.getReferenceById(idPerfilEstudiante);
 
         List<FavoritoEntity> favoritos =
-                favoritoRepository
-                        .findByPerfilEstudiante_IdPerfilEstudianteAndEstadoTrue(
-                                idPerfilEstudiante
-                        );
+                favoritoRepository.findByPerfilEstudianteAndEstadoTrue(
+                        perfilEstudiante
+                );
 
         List<FavoritoResponseDto> response =
                 new ArrayList<>();
@@ -179,23 +111,14 @@ public class FavoritoServiceImpl implements FavoritoService {
             FavoritoResponseDto dto =
                     new FavoritoResponseDto();
 
-            dto.setIdFavorito(
-                    favorito.getIdFavorito()
-            );
-
+            dto.setIdFavorito(favorito.getIdFavorito());
             dto.setIdPerfilEstudiante(
-                    favorito.getPerfilEstudiante()
-                            .getIdPerfilEstudiante()
+                    favorito.getPerfilEstudiante().getIdPerfilEstudiante()
             );
-
             dto.setIdPropiedad(
-                    favorito.getPropiedad()
-                            .getIdPropiedad()
+                    favorito.getPropiedad().getIdPropiedad()
             );
-
-            dto.setEstado(
-                    favorito.getEstado()
-            );
+            dto.setEstado(favorito.getEstado());
 
             response.add(dto);
         }
