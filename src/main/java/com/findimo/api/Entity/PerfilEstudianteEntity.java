@@ -11,17 +11,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tt_perfil_estudiante", schema = "findimo")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class PerfilEstudianteEntity {
 
     @Id
@@ -38,6 +30,9 @@ public class PerfilEstudianteEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
     private UsuarioEntity usuario;
+
+    public PerfilEstudianteEntity() {
+    }
 
     public Long getIdPerfilEstudiante() {
         return idPerfilEstudiante;

@@ -11,19 +11,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tm_usuario", schema = "findimo")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class UsuarioEntity {
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,4 +42,71 @@ public class UsuarioEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idRol", referencedColumnName = "idRol")
 	private RolEntity rol;
+
+	public UsuarioEntity() {
+	}
+
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public String getCorreoElectronico() {
+		return correoElectronico;
+	}
+
+	public void setCorreoElectronico(String correoElectronico) {
+		this.correoElectronico = correoElectronico;
+	}
+
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public LocalDateTime getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(LocalDateTime fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public RolEntity getRol() {
+		return rol;
+	}
+
+	public void setRol(RolEntity rol) {
+		this.rol = rol;
+	}
 }

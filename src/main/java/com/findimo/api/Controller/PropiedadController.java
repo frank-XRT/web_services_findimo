@@ -3,8 +3,6 @@ package com.findimo.api.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,23 +13,26 @@ import com.findimo.api.Dto.PropiedadRequestDto;
 import com.findimo.api.Dto.PropiedadResponseDto;
 import com.findimo.api.Service.PropiedadService;
 
-import lombok.RequiredArgsConstructor;
-
 @RestController
 @RequestMapping("/api/propiedades")
 public class PropiedadController {
+
 	@Autowired
-	private  PropiedadService propiedadService;
+	private PropiedadService propiedadService;
 
 	@PostMapping
-	public ResponseEntity<PropiedadResponseDto> crearPropiedad(
-			@RequestBody PropiedadRequestDto request) {
+	public PropiedadResponseDto crearPropiedad(@RequestBody PropiedadRequestDto request) {
+
 		PropiedadResponseDto propiedad = propiedadService.crearPropiedad(request);
-		return ResponseEntity.status(HttpStatus.CREATED).body(propiedad);
+
+		return propiedad;
 	}
 
 	@GetMapping
 	public List<PropiedadResponseDto> obtenerTodas() {
-		return propiedadService.obtenerTodas();
+
+		List<PropiedadResponseDto> propiedades = propiedadService.obtenerTodas();
+
+		return propiedades;
 	}
 }

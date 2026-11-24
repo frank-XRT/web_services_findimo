@@ -1,71 +1,84 @@
 package com.findimo.api.Service.Impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.findimo.api.Entity.PerfilArrendadorEntity;
-import com.findimo.api.Repository.PerfilArrendadorRepository;
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-
-import com.findimo.api.Entity.PropiedadEntity;
-import com.findimo.api.Repository.PropiedadRepository;
 import com.findimo.api.Dto.PropiedadRequestDto;
 import com.findimo.api.Dto.PropiedadResponseDto;
+import com.findimo.api.Entity.PerfilArrendadorEntity;
+import com.findimo.api.Entity.PropiedadEntity;
+import com.findimo.api.Repository.PerfilArrendadorRepository;
+import com.findimo.api.Repository.PropiedadRepository;
 import com.findimo.api.Service.PropiedadService;
 
-import lombok.RequiredArgsConstructor;
-
 @Service
-@RequiredArgsConstructor
 public class PropiedadServiceImpl implements PropiedadService {
 
-	private final PropiedadRepository propiedadRepository;
-	private final PerfilArrendadorRepository perfilArrendadorRepository;
+	@Autowired
+	private PropiedadRepository propiedadRepository;
+
+	@Autowired
+	private PerfilArrendadorRepository perfilArrendadorRepository;
 
 	@Override
 	public PropiedadResponseDto crearPropiedad(PropiedadRequestDto request) {
-		if (request.getIdPerfilArrendador() == null) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El id del perfil de arrendador es obligatorio");
-		}
 
-		PerfilArrendadorEntity perfilArrendador = perfilArrendadorRepository
-				.findById(request.getIdPerfilArrendador())
-				.orElseThrow(() -> new ResponseStatusException(
-						HttpStatus.NOT_FOUND, "No existe el perfil de arrendador indicado"));
+		PerfilArrendadorEntity perfilArrendador =
+				perfilArrendadorRepository.getReferenceById(request.getIdPerfilArrendador());
 
-		PropiedadEntity propiedad = PropiedadEntity.builder()
-				.titulo(request.getTitulo())
-				.descripcion(request.getDescripcion())
-				.precio(request.getPrecio())
-				.habitaciones(request.getHabitaciones())
-				.direccion(request.getDireccion())
-				.distrito(request.getDistrito())
-				.estado(request.getEstado())
-				.perfilArrendador(perfilArrendador)
-				.build();
+		PropiedadEntity propiedad = new PropiedadEntity();
 
-		return toResponseDto(propiedadRepository.save(propiedad));
+		propiedad.setTitulo(request.getTitulo());
+		propiedad.setDescripcion(request.getDescripcion());
+		propiedad.setPrecio(request.getPrecio());
+		propiedad.setHabitaciones(request.getHabitaciones());
+		propiedad.setDireccion(request.getDireccion());
+		propiedad.setDistrito(request.getDistrito());
+		propiedad.setEstado(request.getEstado());
+		propiedad.setPerfilArrendador(perfilArrendador);
+
+		PropiedadEntity propiedadGuardada = propiedadRepository.save(propiedad);
+
+		PropiedadResponseDto response = new PropiedadResponseDto();
+
+		response.setIdPropiedad(propiedadGuardada.getIdPropiedad());
+		response.setTitulo(propiedadGuardada.getTitulo());
+		response.setDescripcion(propiedadGuardada.getDescripcion());
+		response.setPrecio(propiedadGuardada.getPrecio());
+		response.setHabitaciones(propiedadGuardada.getHabitaciones());
+		response.setDireccion(propiedadGuardada.getDireccion());
+		response.setDistrito(propiedadGuardada.getDistrito());
+		response.setEstado(propiedadGuardada.getEstado());
+
+		return response;
 	}
 
 	@Override
 	public List<PropiedadResponseDto> obtenerTodas() {
-		return propiedadRepository.findAll().stream()
-				.map(this::toResponseDto)
-				.toList();
-	}
 
-	private PropiedadResponseDto toResponseDto(PropiedadEntity propiedad) {
-		return PropiedadResponseDto.builder()
-				.idPropiedad(propiedad.getIdPropiedad())
-				.titulo(propiedad.getTitulo())
-				.descripcion(propiedad.getDescripcion())
-				.precio(propiedad.getPrecio())
-				.habitaciones(propiedad.getHabitaciones())
-				.direccion(propiedad.getDireccion())
-				.distrito(propiedad.getDistrito())
-				.estado(propiedad.getEstado())
-				.build();
+		List<PropiedadEntity> propiedades = propiedadRepository.findAll();
+
+		List<PropiedadResponseDto> response = new ArrayList<>();
+
+		for (PropiedadEntity propiedad : propiedades) {
+
+			PropiedadResponseDto dto = new PropiedadResponseDto();
+
+			dto.setIdPropiedad(propiedad.getIdPropiedad());
+			dto.setTitulo(propiedad.getTitulo());
+			dto.setDescripcion(propiedad.getDescripcion());
+			dto.setPrecio(propiedad.getPrecio());
+			dto.setHabitaciones(propiedad.getHabitaciones());
+			dto.setDireccion(propiedad.getDireccion());
+			dto.setDistrito(propiedad.getDistrito());
+			dto.setEstado(propiedad.getEstado());
+
+			response.add(dto);
+		}
+
+		return response;
 	}
 }
