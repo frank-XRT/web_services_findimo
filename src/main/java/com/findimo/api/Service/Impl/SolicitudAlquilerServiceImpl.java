@@ -1,7 +1,5 @@
 package com.findimo.api.Service.Impl;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +14,7 @@ import com.findimo.api.Repository.SolicitudAlquilerRepository;
 import com.findimo.api.Service.SolicitudAlquilerService;
 
 @Service
-public class SolicitudAlquilerServiceImpl
-        implements SolicitudAlquilerService {
+public class SolicitudAlquilerServiceImpl implements SolicitudAlquilerService {
 
     @Autowired
     private SolicitudAlquilerRepository solicitudAlquilerRepository;
@@ -28,114 +25,26 @@ public class SolicitudAlquilerServiceImpl
     @Autowired
     private PropiedadRepository propiedadRepository;
 
-
     @Override
-    public SolicitudAlquilerResponseDto registrarSolicitud(
-            SolicitudAlquilerRequestDto dto) {
+    public SolicitudAlquilerResponseDto registrarSolicitud(SolicitudAlquilerRequestDto dto) {
 
-        // Validar perfil estudiante
-        if (dto.getIdPerfilEstudiante() == null) {
+        PerfilEstudianteEntity perfilEstudiante = perfilEstudianteRepository.findById(dto.getIdPerfilEstudiante()).orElse(null);
 
-            throw new RuntimeException(
-                    "El id del perfil estudiante es obligatorio."
-            );
-        }
+        PropiedadEntity propiedad = propiedadRepository.findById(dto.getIdPropiedad()).orElse(null);
 
-
-        // Validar propiedad
-        if (dto.getIdPropiedad() == null) {
-
-            throw new RuntimeException(
-                    "El id de la propiedad es obligatorio."
-            );
-        }
-
-
-        // Buscar perfil estudiante
-        Optional<PerfilEstudianteEntity> perfilOptional =
-                perfilEstudianteRepository.findById(
-                        dto.getIdPerfilEstudiante()
-                );
-
-        if (perfilOptional.isEmpty()) {
-
-            throw new RuntimeException(
-                    "El perfil estudiante no existe."
-            );
-        }
-
-        PerfilEstudianteEntity perfilEstudiante =
-                perfilOptional.get();
-
-
-        // Buscar propiedad
-        Optional<PropiedadEntity> propiedadOptional =
-                propiedadRepository.findById(
-                        dto.getIdPropiedad()
-                );
-
-        if (propiedadOptional.isEmpty()) {
-
-            throw new RuntimeException(
-                    "La propiedad no existe."
-            );
-        }
-
-        PropiedadEntity propiedad =
-                propiedadOptional.get();
-
-
-        // Crear solicitud
-        SolicitudAlquilerEntity solicitud =
-                new SolicitudAlquilerEntity();
-
-        solicitud.setPerfilEstudiante(
-                perfilEstudiante
-        );
-
-        solicitud.setPropiedad(
-                propiedad
-        );
-
-        // Estado inicial
+        SolicitudAlquilerEntity solicitud = new SolicitudAlquilerEntity();
+        solicitud.setPerfilEstudiante(perfilEstudiante);
+        solicitud.setPropiedad(propiedad);
         solicitud.setEstado(true);
 
+        SolicitudAlquilerEntity solicitudGuardada = solicitudAlquilerRepository.save(solicitud);
 
-        // Guardar solicitud
-        SolicitudAlquilerEntity solicitudGuardada =
-                solicitudAlquilerRepository.save(
-                        solicitud
-                );
-
-
-        // Crear respuesta
-        SolicitudAlquilerResponseDto response =
-                new SolicitudAlquilerResponseDto();
-
-        response.setIdSolicitudAlquiler(
-                solicitudGuardada.getIdSolicitudAlquiler()
-        );
-
-        response.setIdPerfilEstudiante(
-                solicitudGuardada
-                        .getPerfilEstudiante()
-                        .getIdPerfilEstudiante()
-        );
-
-        response.setIdPropiedad(
-                solicitudGuardada
-                        .getPropiedad()
-                        .getIdPropiedad()
-        );
-
-        response.setEstado(
-                solicitudGuardada.getEstado()
-        );
-
-        response.setFechaCreacion(
-                solicitudGuardada.getFechaCreacion()
-        );
-
+        SolicitudAlquilerResponseDto response = new SolicitudAlquilerResponseDto();
+        response.setIdSolicitudAlquiler(solicitudGuardada.getIdSolicitudAlquiler());
+        response.setIdPerfilEstudiante(solicitudGuardada.getPerfilEstudiante().getIdPerfilEstudiante());
+        response.setIdPropiedad(solicitudGuardada.getPropiedad().getIdPropiedad());
+        response.setEstado(solicitudGuardada.getEstado());
+        response.setFechaCreacion(solicitudGuardada.getFechaCreacion());
 
         return response;
     }

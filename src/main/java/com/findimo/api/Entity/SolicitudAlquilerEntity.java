@@ -12,17 +12,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Entity
 @Table(name = "tt_solicitud_alquiler", schema = "findimo")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class SolicitudAlquilerEntity {
 
     @Id
@@ -31,26 +22,59 @@ public class SolicitudAlquilerEntity {
     private Long idSolicitudAlquiler;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(
-            name = "IDPERFILESTUDIANTE",
-            nullable = false
-    )
+    @JoinColumn(name = "IDPERFILESTUDIANTE", nullable = false)
     private PerfilEstudianteEntity perfilEstudiante;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(
-            name = "IDPROPIEDAD",
-            nullable = false
-    )
+    @JoinColumn(name = "IDPROPIEDAD", nullable = false)
     private PropiedadEntity propiedad;
 
     @Column(name = "ESTADO", nullable = false)
     private Boolean estado;
 
-    @Column(
-            name = "FECHACREACION",
-            insertable = false,
-            updatable = false
-    )
+    @Column(name = "FECHACREACION", insertable = false, updatable = false)
     private LocalDateTime fechaCreacion;
+
+    public SolicitudAlquilerEntity() {
+    }
+
+    public Long getIdSolicitudAlquiler() {
+        return idSolicitudAlquiler;
+    }
+
+    public void setIdSolicitudAlquiler(Long idSolicitudAlquiler) {
+        this.idSolicitudAlquiler = idSolicitudAlquiler;
+    }
+
+    public PerfilEstudianteEntity getPerfilEstudiante() {
+        return perfilEstudiante;
+    }
+
+    public void setPerfilEstudiante(PerfilEstudianteEntity perfilEstudiante) {
+        this.perfilEstudiante = perfilEstudiante;
+    }
+
+    public PropiedadEntity getPropiedad() {
+        return propiedad;
+    }
+
+    public void setPropiedad(PropiedadEntity propiedad) {
+        this.propiedad = propiedad;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    public LocalDateTime getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
 }

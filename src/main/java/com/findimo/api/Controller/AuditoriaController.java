@@ -29,13 +29,4 @@ public class AuditoriaController {
         return ResponseEntity.ok(auditorias);
     }
 
-    @GetMapping("/{idAuditoria}")
-    public ResponseEntity<AuditoriaResponseDto> obtenerAuditoria(
-            @PathVariable Long idAuditoria) {
-
-        AuditoriaResponseDto response =
-                auditoriaService.obtenerAuditoria(idAuditoria);
-
-        return ResponseEntity.ok(response);
-    }
 }
