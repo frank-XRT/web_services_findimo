@@ -9,6 +9,8 @@ public class ResenaResponseDto {
     private String nombreAutor;
     private String apellidoAutor;
     private Long idPropiedad;
+    private String tituloPropiedad;
+    private String nombreObjetivo;
     private Long idUsuarioObjetivo;
     private Integer calificacion;
     private String comentario;
@@ -64,6 +66,22 @@ public class ResenaResponseDto {
 
     public void setIdUsuarioObjetivo(Long idUsuarioObjetivo) {
         this.idUsuarioObjetivo = idUsuarioObjetivo;
+    }
+
+    public String getTituloPropiedad() {
+        return tituloPropiedad;
+    }
+
+    public void setTituloPropiedad(String tituloPropiedad) {
+        this.tituloPropiedad = tituloPropiedad;
+    }
+
+    public String getNombreObjetivo() {
+        return nombreObjetivo;
+    }
+
+    public void setNombreObjetivo(String nombreObjetivo) {
+        this.nombreObjetivo = nombreObjetivo;
     }
 
     public Integer getCalificacion() {

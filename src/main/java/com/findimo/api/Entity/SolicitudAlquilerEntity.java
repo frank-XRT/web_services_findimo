@@ -1,9 +1,12 @@
 package com.findimo.api.Entity;
 
 import java.time.LocalDateTime;
+import java.time.Instant;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +18,47 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tt_solicitud_alquiler", schema = "findimo")
 public class SolicitudAlquilerEntity {
+    public enum Situacion {
+        PENDIENTE, ACEPTADA, CANCELADA
+    }
+
+    public enum Reserva { PENDIENTE, CONFIRMADA, RECHAZADA, FINALIZADA }
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado_reserva", length = 12)
+    private Reserva reserva;
+
+    @Column(name = "reserva_iniciada_por_arrendador", nullable = false)
+    private boolean reservaIniciadaPorArrendador;
+
+    public boolean isReservaIniciadaPorArrendador() {
+        return reservaIniciadaPorArrendador;
+    }
+
+    public void iniciarReserva(boolean arrendador) {
+        reserva = Reserva.PENDIENTE;
+        reservaIniciadaPorArrendador = arrendador;
+    }
+
+    @Column(name = "reserva_finalizada_en")
+    private Instant reservaFinalizadaEn;
+
+    public Instant getReservaFinalizadaEn() {
+        return reservaFinalizadaEn;
+    }
+
+    public void finalizarReserva() {
+        reserva = Reserva.FINALIZADA;
+        reservaFinalizadaEn = Instant.now();
+    }
+
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +74,7 @@ public class SolicitudAlquilerEntity {
     private PropiedadEntity propiedad;
 
     @Column(name = "ESTADO", nullable = false)
-    private Boolean estado;
+    private String estado = Situacion.PENDIENTE.name();
 
     @Column(name = "FECHACREACION", insertable = false, updatable = false)
     private LocalDateTime fechaCreacion;
@@ -62,12 +106,16 @@ public class SolicitudAlquilerEntity {
         this.propiedad = propiedad;
     }
 
-    public Boolean getEstado() {
-        return estado;
+    public Situacion getSituacion() {
+        return switch (estado) {
+            case "ACEPTADA" -> Situacion.ACEPTADA;
+            case "RECHAZADA", "CANCELADA", "false" -> Situacion.CANCELADA;
+            default -> Situacion.PENDIENTE;
+        };
     }
 
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
+    public void resolver(Situacion decision) {
+        estado = decision.name();
     }
 
     public LocalDateTime getFechaCreacion() {
