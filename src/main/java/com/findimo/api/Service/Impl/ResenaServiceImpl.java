@@ -1,13 +1,14 @@
 package com.findimo.api.Service.Impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.findimo.api.Dto.ResenaRequestDto;
 import com.findimo.api.Dto.ResenaResponseDto;
+import com.findimo.api.Dto.ResenasPerfilDto;
 import com.findimo.api.Entity.PropiedadEntity;
 import com.findimo.api.Entity.ResenaEntity;
 import com.findimo.api.Entity.UsuarioEntity;
@@ -29,32 +30,35 @@ public class ResenaServiceImpl implements ResenaService {
     private PropiedadRepository propiedadRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<ResenaResponseDto> listarResenasPorPropiedad(Long idPropiedad) {
-
-        List<ResenaEntity> resenas = resenaRepository.findByPropiedad_IdPropiedad(idPropiedad);
-        List<ResenaResponseDto> response = new ArrayList<>();
-
-        for (ResenaEntity resena : resenas) {
-
-            ResenaResponseDto dto = new ResenaResponseDto();
-
-            dto.setIdResena(resena.getIdResena());
-            dto.setIdUsuarioAutor(resena.getUsuarioAutor().getIdUsuario());
-            dto.setNombreAutor(resena.getUsuarioAutor().getNombre());
-            dto.setApellidoAutor(resena.getUsuarioAutor().getApellido());
-            dto.setIdPropiedad(resena.getPropiedad().getIdPropiedad());
-            dto.setCalificacion(resena.getCalificacion());
-            dto.setComentario(resena.getComentario());
-            dto.setFechaCreacion(resena.getFechaCreacion());
-            dto.setEstado(resena.getEstado());
-
-            response.add(dto);
-        }
-
-        return response;
+        return resenaRepository.findByPropiedad_IdPropiedadAndUsuarioObjetivoIsNullAndEstadoTrueOrderByIdResenaDesc(idPropiedad)
+                .stream().map(this::convertir).toList();
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<ResenaResponseDto> listarResenasDelArrendador(Long idPropiedad) {
+        var propietario = propiedadRepository.findById(idPropiedad)
+                .map(PropiedadEntity::getPerfilArrendador)
+                .map(perfil -> perfil.getUsuario());
+        return propietario.map(usuario -> resenaRepository
+                .listarResenasDelArrendador(usuario.getIdUsuario())
+                .stream().map(this::convertir).toList()).orElseGet(List::of);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public ResenasPerfilDto listarResenasDePerfil(Long idUsuario) {
+        var recibidas = resenaRepository.findByUsuarioObjetivo_IdUsuarioAndEstadoTrueOrderByIdResenaDesc(idUsuario)
+                .stream().map(this::convertir).toList();
+        var escritas = resenaRepository.findByUsuarioAutor_IdUsuarioAndEstadoTrueOrderByIdResenaDesc(idUsuario)
+                .stream().map(this::convertir).toList();
+        return new ResenasPerfilDto(recibidas, escritas);
+    }
+
+    @Override
+    @Transactional
     public ResenaResponseDto registrarResena(ResenaRequestDto dto) {
 
         UsuarioEntity usuarioAutor = usuarioRepository.getReferenceById(dto.getIdUsuarioAutor());
@@ -79,27 +83,31 @@ public class ResenaServiceImpl implements ResenaService {
         resena.setComentario(dto.getComentario());
         resena.setEstado(true);
 
-        ResenaEntity resenaGuardada = resenaRepository.save(resena);
+        return convertir(resenaRepository.save(resena));
+    }
+
+    private ResenaResponseDto convertir(ResenaEntity resena) {
+        UsuarioEntity autor = resena.getUsuarioAutor();
+        PropiedadEntity propiedad = resena.getPropiedad();
+        UsuarioEntity objetivo = resena.getUsuarioObjetivo();
 
         ResenaResponseDto response = new ResenaResponseDto();
-        response.setIdResena(resenaGuardada.getIdResena());
-        response.setIdUsuarioAutor(usuarioAutor.getIdUsuario());
-        response.setNombreAutor(usuarioAutor.getNombre());
-        response.setApellidoAutor(usuarioAutor.getApellido());
-
+        response.setIdResena(resena.getIdResena());
+        response.setIdUsuarioAutor(autor.getIdUsuario());
+        response.setNombreAutor(autor.getNombre());
+        response.setApellidoAutor(autor.getApellido());
         if (propiedad != null) {
             response.setIdPropiedad(propiedad.getIdPropiedad());
+            response.setTituloPropiedad(propiedad.getTitulo());
         }
-
-        if (usuarioObjetivo != null) {
-            response.setIdUsuarioObjetivo(usuarioObjetivo.getIdUsuario());
+        if (objetivo != null) {
+            response.setIdUsuarioObjetivo(objetivo.getIdUsuario());
+            response.setNombreObjetivo(objetivo.getNombre() + " " + objetivo.getApellido());
         }
-
-        response.setCalificacion(resenaGuardada.getCalificacion());
-        response.setComentario(resenaGuardada.getComentario());
-        response.setFechaCreacion(resenaGuardada.getFechaCreacion());
-        response.setEstado(resenaGuardada.getEstado());
-
+        response.setCalificacion(resena.getCalificacion());
+        response.setComentario(resena.getComentario());
+        response.setFechaCreacion(resena.getFechaCreacion());
+        response.setEstado(resena.getEstado());
         return response;
     }
 }

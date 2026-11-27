@@ -33,6 +33,14 @@ public class ResenaEntity {
     @JoinColumn(name = "IDUSUARIOOBJETIVO")
     private UsuarioEntity usuarioObjetivo;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idsolicitudalquiler")
+    private SolicitudAlquilerEntity solicitudAlquiler;
+
+    public void setSolicitudAlquiler(SolicitudAlquilerEntity solicitudAlquiler) {
+        this.solicitudAlquiler = solicitudAlquiler;
+    }
+
     @Column(name = "CALIFICACION", nullable = false)
     private Integer calificacion;
 

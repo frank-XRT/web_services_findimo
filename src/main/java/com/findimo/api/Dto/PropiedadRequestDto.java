@@ -1,17 +1,66 @@
 package com.findimo.api.Dto;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Set;
+
+import com.findimo.api.Entity.LugarCercano;
 
 public class PropiedadRequestDto {
+
+	private Integer idTipoPropiedad;
+	private Set<Integer> idsServicios;
+	private boolean tipoEnviado;
+
+	public Integer getIdTipoPropiedad() {
+		return idTipoPropiedad;
+	}
+
+	public void setIdTipoPropiedad(Integer idTipoPropiedad) {
+		this.idTipoPropiedad = idTipoPropiedad;
+		this.tipoEnviado = true;
+	}
+
+	public Set<Integer> getIdsServicios() {
+		return idsServicios;
+	}
+
+	public void setIdsServicios(Set<Integer> idsServicios) {
+		this.idsServicios = idsServicios;
+	}
+
+	public boolean tieneTipo() {
+		return tipoEnviado;
+	}
 
 	private Long idPerfilArrendador;
 	private String titulo;
 	private String descripcion;
 	private BigDecimal precio;
 	private Integer habitaciones;
+	private BigDecimal area;
 	private String direccion;
 	private String distrito;
 	private Boolean estado;
+	private List<LugarCercano> entorno;
+	private List<String> serviciosPersonalizados;
+
+	public List<String> getServiciosPersonalizados() {
+		return serviciosPersonalizados;
+	}
+
+	public void setServiciosPersonalizados(List<String> serviciosPersonalizados) {
+		this.serviciosPersonalizados = serviciosPersonalizados;
+	}
+	private List<String> fotosRetiradas;
+
+	public List<String> getFotosRetiradas() {
+		return fotosRetiradas;
+	}
+
+	public void setFotosRetiradas(List<String> fotosRetiradas) {
+		this.fotosRetiradas = fotosRetiradas;
+	}
 
 	public PropiedadRequestDto() {
 	}
@@ -48,6 +97,14 @@ public class PropiedadRequestDto {
 		this.precio = precio;
 	}
 
+	public BigDecimal getArea() {
+		return area;
+	}
+
+	public void setArea(BigDecimal area) {
+		this.area = area;
+	}
+
 	public Integer getHabitaciones() {
 		return habitaciones;
 	}
@@ -78,5 +135,13 @@ public class PropiedadRequestDto {
 
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
+	}
+
+	public List<LugarCercano> getEntorno() {
+		return entorno;
+	}
+
+	public void setEntorno(List<LugarCercano> entorno) {
+		this.entorno = entorno;
 	}
 }

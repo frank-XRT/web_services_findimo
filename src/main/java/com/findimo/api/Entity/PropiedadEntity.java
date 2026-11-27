@@ -1,8 +1,16 @@
 package com.findimo.api.Entity;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.List;
+
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -32,6 +40,8 @@ public class PropiedadEntity {
 
 	@Column(name = "HABITACIONES")
 	private Integer habitaciones;
+	@Column(name = "area_m2", precision = 8, scale = 2)
+	private BigDecimal area;
 
 	@Column(name = "DIRECCION")
 	private String direccion;
@@ -42,9 +52,45 @@ public class PropiedadEntity {
 	@Column(name = "ESTADO")
 	private Boolean estado;
 
+	@JdbcTypeCode(SqlTypes.JSON)
+	@Column(name = "entorno", columnDefinition = "jsonb")
+	private List<LugarCercano> entorno;
+
+	@JdbcTypeCode(SqlTypes.JSON)
+	@Column(name = "servicios_personalizados", columnDefinition = "jsonb")
+	private List<String> serviciosPersonalizados = List.of();
+
+	public List<String> getServiciosPersonalizados() {
+		return serviciosPersonalizados;
+	}
+
+	public void setServiciosPersonalizados(List<String> serviciosPersonalizados) {
+		this.serviciosPersonalizados = serviciosPersonalizados;
+	}
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPerfilArrendador", referencedColumnName = "idPerfilArrendador")
 	private PerfilArrendadorEntity perfilArrendador;
+
+	@Column(name = "idtipopropiedad")
+	private Integer idTipoPropiedad;
+
+	@ElementCollection
+	@CollectionTable(name = "tt_propiedad_servicio", schema = "findimo", joinColumns = @JoinColumn(name = "idpropiedad"))
+	@Column(name = "idservicio", nullable = false)
+	private Set<Integer> idsServicios = new HashSet<>();
+
+	public Integer getIdTipoPropiedad() {
+		return idTipoPropiedad;
+	}
+
+	public void setIdTipoPropiedad(Integer idTipoPropiedad) {
+		this.idTipoPropiedad = idTipoPropiedad;
+	}
+
+	public Set<Integer> getIdsServicios() {
+		return idsServicios;
+	}
 
 	public PropiedadEntity() {
 	}
@@ -79,6 +125,14 @@ public class PropiedadEntity {
 
 	public void setPrecio(BigDecimal precio) {
 		this.precio = precio;
+	}
+
+	public BigDecimal getArea() {
+		return area;
+	}
+
+	public void setArea(BigDecimal area) {
+		this.area = area;
 	}
 
 	public Integer getHabitaciones() {
@@ -119,5 +173,13 @@ public class PropiedadEntity {
 
 	public void setPerfilArrendador(PerfilArrendadorEntity perfilArrendador) {
 		this.perfilArrendador = perfilArrendador;
+	}
+
+	public List<LugarCercano> getEntorno() {
+		return entorno;
+	}
+
+	public void setEntorno(List<LugarCercano> entorno) {
+		this.entorno = entorno;
 	}
 }

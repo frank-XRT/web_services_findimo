@@ -1,8 +1,12 @@
 package com.findimo.api.Entity;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -36,12 +40,28 @@ public class UsuarioEntity {
 	@Column(name = "TELEFONO")
 	private String telefono;
 
+	@Column(name = "ESTADO", nullable = false)
+	private boolean estado = true;
+
+	public boolean isEstado() {
+		return estado;
+	}
+
 	@Column(name = "FECHACREACION", insertable = false, updatable = false)
 	private LocalDateTime fechaCreacion;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idRol", referencedColumnName = "idRol")
 	private RolEntity rol;
+
+	@ElementCollection
+	@CollectionTable(name = "tt_favorito_usuario", schema = "findimo", joinColumns = @JoinColumn(name = "idusuario"))
+	@Column(name = "idpropiedad", nullable = false)
+	private Set<Long> propiedadesFavoritas = new HashSet<>();
+
+	public Set<Long> getPropiedadesFavoritas() {
+		return propiedadesFavoritas;
+	}
 
 	public UsuarioEntity() {
 	}
