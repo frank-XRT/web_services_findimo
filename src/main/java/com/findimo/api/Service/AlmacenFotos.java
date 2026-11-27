@@ -1,6 +1,8 @@
 package com.findimo.api.Service;
 
 import java.io.IOException;
+import java.io.ByteArrayOutputStream;
+import java.util.Optional;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -26,9 +28,12 @@ public class AlmacenFotos {
     private static final long MAX_PIXELES = 20_000_000L;
     private static final Logger LOG = LoggerFactory.getLogger(AlmacenFotos.class);
     private final Path directorio;
+    private final Optional<FotosCloudinary> nube;
 
-    public AlmacenFotos(@Value("${findimo.fotos.directorio:uploads/viviendas}") String directorio) {
+    public AlmacenFotos(@Value("${findimo.fotos.directorio:uploads/viviendas}") String directorio,
+            Optional<FotosCloudinary> nube) {
         this.directorio = Path.of(directorio).toAbsolutePath().normalize();
+        this.nube = nube;
     }
 
     public Path getDirectorio() {
@@ -40,10 +45,18 @@ public class AlmacenFotos {
         if (fotos.size() > 5) throw fotoInvalida();
 
         var archivos = new ArrayList<Path>();
+        var idsNube = new ArrayList<String>();
         TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
             @Override
             public void afterCompletion(int estado) {
                 if (estado != STATUS_ROLLED_BACK) return;
+                nube.ifPresent(almacen -> idsNube.forEach(id -> {
+                    try {
+                        almacen.quitar(id);
+                    } catch (RuntimeException error) {
+                        LOG.warn("No se pudo limpiar una foto remota de la publicación fallida");
+                    }
+                }));
                 for (Path archivo : archivos) {
                     try {
                         Files.deleteIfExists(archivo);
@@ -56,12 +69,12 @@ public class AlmacenFotos {
 
         var rutas = new ArrayList<String>();
         for (MultipartFile foto : fotos) {
-            rutas.add(guardarFoto(foto, archivos));
+            rutas.add(guardarFoto(foto, archivos, idsNube));
         }
         return rutas;
     }
 
-    private String guardarFoto(MultipartFile foto, List<Path> archivos) {
+    private String guardarFoto(MultipartFile foto, List<Path> archivos, List<String> idsNube) {
         if (foto.isEmpty() || foto.getSize() > MAX_BYTES) throw fotoInvalida();
 
         try (var entrada = foto.getInputStream(); var imagen = ImageIO.createImageInputStream(entrada)) {
@@ -78,6 +91,15 @@ public class AlmacenFotos {
                     throw fotoInvalida();
                 }
                 var pixeles = lector.read(0);
+                if (nube.isPresent()) {
+                    var salida = new ByteArrayOutputStream();
+                    if (!ImageIO.write(pixeles, formato, salida)) {
+                        throw new IOException("No hay un codificador de imágenes disponible.");
+                    }
+                    String id = "findimo/viviendas/" + UUID.randomUUID();
+                    idsNube.add(id);
+                    return nube.get().guardar(id, formato, salida.toByteArray());
+                }
                 Files.createDirectories(directorio);
                 Path archivo = directorio.resolve(UUID.randomUUID() + (jpeg ? ".jpg" : ".png"));
                 try (var salida = Files.newOutputStream(archivo, java.nio.file.StandardOpenOption.CREATE_NEW)) {

@@ -1,6 +1,8 @@
 package com.findimo.api.Config;
 
+import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,7 +40,7 @@ public class SeguridadConfig {
     }
 
     @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
+    public CorsConfigurationSource corsConfigurationSource(@Value("${findimo.frontend.origin:}") String origen) {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOriginPatterns(List.of("*"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
@@ -48,7 +50,9 @@ public class SeguridadConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration sesion = new CorsConfiguration(configuration);
         sesion.setAllowedOriginPatterns(List.of());
-        sesion.setAllowedOrigins(List.of("http://localhost:4200", "http://127.0.0.1:4200"));
+        var origenes = new ArrayList<>(List.of("http://localhost:4200", "http://127.0.0.1:4200"));
+        if (!origen.isBlank()) origenes.add(origen.strip());
+        sesion.setAllowedOrigins(origenes);
         source.registerCorsConfiguration("/api/usuarios/**", sesion);
         source.registerCorsConfiguration("/api/admin/**", sesion);
         source.registerCorsConfiguration("/auditorias", sesion);
