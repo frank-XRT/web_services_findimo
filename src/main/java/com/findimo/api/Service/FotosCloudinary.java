@@ -42,6 +42,10 @@ public class FotosCloudinary {
                 .build();
     }
 
+    public boolean configurado() {
+        return cliente != null;
+    }
+
     public String guardar(String id, String formato, byte[] foto) {
         if (cliente == null) {
             throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "La subida de fotos todavía no está configurada.");

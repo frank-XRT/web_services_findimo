@@ -26,6 +26,12 @@ SET row_security = off;
 
 CREATE SCHEMA findimo;
 
+CREATE TABLE findimo.tt_foto_binaria (
+    id uuid PRIMARY KEY,
+    tipo varchar(20) NOT NULL,
+    contenido bytea NOT NULL
+);
+
 
 SET default_table_access_method = heap;
 

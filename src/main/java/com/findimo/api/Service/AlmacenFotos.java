@@ -29,11 +29,13 @@ public class AlmacenFotos {
     private static final Logger LOG = LoggerFactory.getLogger(AlmacenFotos.class);
     private final Path directorio;
     private final Optional<FotosCloudinary> nube;
+    private final FotosBaseDatos fotosBaseDatos;
 
     public AlmacenFotos(@Value("${findimo.fotos.directorio:uploads/viviendas}") String directorio,
-            Optional<FotosCloudinary> nube) {
+            Optional<FotosCloudinary> nube, FotosBaseDatos fotosBaseDatos) {
         this.directorio = Path.of(directorio).toAbsolutePath().normalize();
         this.nube = nube;
+        this.fotosBaseDatos = fotosBaseDatos;
     }
 
     public Path getDirectorio() {
@@ -96,9 +98,14 @@ public class AlmacenFotos {
                     if (!ImageIO.write(pixeles, formato, salida)) {
                         throw new IOException("No hay un codificador de imágenes disponible.");
                     }
+                    byte[] contenido = salida.toByteArray();
+                    var almacenamiento = nube.get();
+                    if (!almacenamiento.configurado()) {
+                        return fotosBaseDatos.guardar(formato, contenido);
+                    }
                     String id = "findimo/viviendas/" + UUID.randomUUID();
                     idsNube.add(id);
-                    return nube.get().guardar(id, formato, salida.toByteArray());
+                    return almacenamiento.guardar(id, formato, contenido);
                 }
                 Files.createDirectories(directorio);
                 Path archivo = directorio.resolve(UUID.randomUUID() + (jpeg ? ".jpg" : ".png"));
